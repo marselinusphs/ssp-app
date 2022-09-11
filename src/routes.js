@@ -8,6 +8,13 @@ const {
 
 const routes = [
   {
+    method: 'GET',
+    path: '/',
+    handler: (request, h) => {
+      return '<h1>P P P ente kadang-kadang<h1>';
+  },
+  },
+  {
     method: 'POST',
     path: '/notes',
     handler: addNoteHandler,
