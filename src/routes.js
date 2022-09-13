@@ -7,13 +7,11 @@ const {
 } = require('./handler');
 
 const routes = [
-  {
-    method: 'GET',
-    path: '/',
-    handler: (request, h) => {
-      return '<h1>P P P ente kadang-kadang<h1>';
-  },
-  },
+  // {
+  //   method: 'GET',
+  //   path: '/',
+  //   handler: './home.html'
+  // },
   {
     method: 'POST',
     path: '/notes',

@@ -1,5 +1,11 @@
 const { nanoid } = require('nanoid');
 const notes = require('./notes');
+// const http = require('http');
+
+// const getHome = (request, h) => ({
+//   status: 'success',
+//   h.end("")
+// });
 
 const addNoteHandler = (request, h) => {
   const { title, tags, body } = request.payload;
@@ -57,6 +63,7 @@ const getNoteByIdHandler = (request, h) => {
   response.code(404);
   return response;
 };
+
 const editNoteByIdHandler = (request, h) => {
   const { id } = request.params;
   const { title, tags, body } = request.payload;
