@@ -1,5 +1,5 @@
 const { nanoid } = require('nanoid');
-const notes = require('./notes');
+const products = require('./products');
 // const http = require('http');
 
 // const getHome = (request, h) => ({
@@ -7,24 +7,24 @@ const notes = require('./notes');
 //   h.end("")
 // });
 
-const addNoteHandler = (request, h) => {
+const addProductHandler = (request, h) => {
   const { title, tags, body } = request.payload;
   const id = nanoid(16);
   const createdAt = new Date().toISOString();
   const updatedAt = createdAt;
 
-  const newNote = {
+  const newProduct = {
     title, tags, body, id, createdAt, updatedAt,
   };
-  notes.push(newNote);
-  const isSuccess = notes.filter((note) => note.id === id).length > 0;
+  products.push(newProduct);
+  const isSuccess = products.filter((product) => product.id === id).length > 0;
 
   if (isSuccess) {
     const response = h.response({
       status: 'success',
       message: 'Catatan berhasil ditambahkan',
       data: {
-        noteId: id,
+        productId: id,
       },
     });
     response.code(201);
@@ -38,21 +38,21 @@ const addNoteHandler = (request, h) => {
   return response;
 };
 
-const getAllNotesHandler = () => ({
+const getAllProductsHandler = () => ({
   status: 'success',
   data: {
-    notes,
+    products,
   },
 });
 
-const getNoteByIdHandler = (request, h) => {
+const getProductByIdHandler = (request, h) => {
   const { id } = request.params;
-  const note = notes.filter((n) => n.id === id)[0];
-  if (note !== undefined) {
+  const product = products.filter((n) => n.id === id)[0];
+  if (product !== undefined) {
     return {
       status: 'success',
       data: {
-        note,
+        product,
       },
     };
   }
@@ -64,14 +64,14 @@ const getNoteByIdHandler = (request, h) => {
   return response;
 };
 
-const editNoteByIdHandler = (request, h) => {
+const editProductByIdHandler = (request, h) => {
   const { id } = request.params;
   const { title, tags, body } = request.payload;
   const updatedAt = new Date().toISOString();
-  const index = notes.findIndex((note) => note.id === id);
+  const index = products.findIndex((product) => product.id === id);
   if (index !== -1) {
-    notes[index] = {
-      ...notes[index],
+    products[index] = {
+      ...products[index],
       title,
       tags,
       body,
@@ -92,13 +92,13 @@ const editNoteByIdHandler = (request, h) => {
   return response;
 };
 
-const deleteNoteByIdHandler = (request, h) => {
+const deleteProductByIdHandler = (request, h) => {
   const { id } = request.params;
 
-  const index = notes.findIndex((note) => note.id === id);
+  const index = products.findIndex((product) => product.id === id);
 
   if (index !== -1) {
-    notes.splice(index, 1);
+    products.splice(index, 1);
     const response = h.response({
       status: 'success',
       message: 'Catatan berhasil dihapus',
@@ -116,9 +116,9 @@ const deleteNoteByIdHandler = (request, h) => {
 };
 
 module.exports = {
-  addNoteHandler,
-  getAllNotesHandler,
-  getNoteByIdHandler,
-  editNoteByIdHandler,
-  deleteNoteByIdHandler,
+  addProductHandler,
+  getAllProductsHandler,
+  getProductByIdHandler,
+  editProductByIdHandler,
+  deleteProductByIdHandler,
 };

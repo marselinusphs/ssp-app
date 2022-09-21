@@ -1,9 +1,9 @@
 const {
-  addNoteHandler,
-  getAllNotesHandler,
-  getNoteByIdHandler,
-  editNoteByIdHandler,
-  deleteNoteByIdHandler,
+  addProductHandler,
+  getAllProductsHandler,
+  getProductByIdHandler,
+  editProductByIdHandler,
+  deleteProductByIdHandler,
 } = require('./handler');
 
 const routes = [
@@ -14,28 +14,28 @@ const routes = [
   // },
   {
     method: 'POST',
-    path: '/notes',
-    handler: addNoteHandler,
+    path: '/products',
+    handler: addProductHandler,
   },
   {
     method: 'GET',
-    path: '/notes',
-    handler: getAllNotesHandler,
+    path: '/products',
+    handler: getAllProductsHandler,
   },
   {
     method: 'GET',
-    path: '/notes/{id}',
-    handler: getNoteByIdHandler,
+    path: '/products/{id}',
+    handler: getProductByIdHandler,
   },
   {
     method: 'PUT',
-    path: '/notes/{id}',
-    handler: editNoteByIdHandler,
+    path: '/products/{id}',
+    handler: editProductByIdHandler,
   },
   {
     method: 'DELETE',
-    path: '/notes/{id}',
-    handler: deleteNoteByIdHandler,
+    path: '/products/{id}',
+    handler: deleteProductByIdHandler,
   },
 ];
 module.exports = routes;

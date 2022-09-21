@@ -1,5 +1,5 @@
 const Hapi = require('@hapi/hapi');
-//const notesPlugin = require('./notesPlugin')
+//const productsPlugin = require('./productsPlugin')
 const routes = require('./routes');
 
 const init = async () => {
@@ -14,8 +14,8 @@ const init = async () => {
   });
   
   // await server.register({
-  //   plugin: notesPlugin,
-  //   options: { notes: [] },
+  //   plugin: productsPlugin,
+  //   options: { products: [] },
   // });
 
   server.route(routes);
