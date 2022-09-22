@@ -1,15 +1,15 @@
 // module.exports = {
-//   name: 'notes',
+//   name: 'products',
 //   version: '1.0.0',
 //   register: async (server, options) => {
-//     const notes = options.notes;
-//     console.log(notes);
+//     const products = options.products;
+//     console.log(products);
 //     server.route([
 //       {
 //         method: 'GET',
-//         path: '/notes',
+//         path: '/products',
 //         handler: () => {
-//           return notes;
+//           return products;
 //         }
 //       }
 //     ])
