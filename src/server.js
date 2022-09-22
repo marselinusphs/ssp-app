@@ -1,6 +1,7 @@
 const Hapi = require('@hapi/hapi');
 const products = require('./api/products');
 const ProductsService = require('./services/inMemory/ProductsService');
+const ProductsValidator = require('./validator/products');
  
 const init = async () => {
   const productsService = new ProductsService();
@@ -18,6 +19,7 @@ const init = async () => {
     plugin: products,
     options: {
       service: productsService,
+      validator: ProductsValidator,
     },
   });
  

@@ -1,6 +1,7 @@
 class ProductsHandler {
-  constructor(service) {
+  constructor(service, validator) {
     this._service = service;
+    this._validator = validator;
 
     this.postProductHandler = this.postProductHandler.bind(this);
     this.getProductsHandler = this.getProductsHandler.bind(this);
@@ -11,6 +12,7 @@ class ProductsHandler {
 
   postProductHandler(request, h) {
     try {
+      this._validator.validateProductPayload(request.payload);
       const { title = 'untitled', body, tags } = request.payload;
 
       const productId = this._service.addProduct({ title, body, tags });
@@ -66,6 +68,7 @@ class ProductsHandler {
 
   putProductByIdHandler(request, h) {
     try {
+      this._validator.validateProductPayload(request.payload);
       const { id } = request.params;
 
       this._service.editProductById(id, request.payload);
