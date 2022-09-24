@@ -1,2 +1,4 @@
 node_modules
 ssp-api-webserver.pem
+.env
+.prod.env
